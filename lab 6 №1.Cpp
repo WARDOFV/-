@@ -1,48 +1,60 @@
 #include <iostream>
+#include <string>
 #include <fstream>
-#include <vector>
 using namespace std;
 
 int main() {
-    int n, m;
-    cout << "Enter number of even numbers: ";
-    cin >> n;
-    ofstream outFile("file.txt");
-    if (!outFile) {
-        cout << "File open error" << endl;
-        return 1;
-    }
+	int n, m;
+	cout << "dai koll chisla chto ti hocheh"<<"--";
+	cin >> n;
+	cout << endl;
+
+	ofstream file("jdsaf.txt");
+	if (!file) {
+		cout << "net";
+		return 1;
+	}
     
-    cout << "filling file with numbers... " << endl;
-    for (int i = 1; i <= n; ++i) {
-        outFile << 2 * i;
-        if (i < n) outFile << " ";
-    }
-    outFile.close();
-    cout << "Numbers are sucsessfuly entered in 'file.txt'" << endl;
-    cout << "How much numbers do you want to read?: ";
+	
+    for (int i = 0; i <= n; i++) {
+		file << (i+1) * 2;
+        if (i != n - 1) {
+            file << " ";
+        }
+	}
+    file.close();
+    
+    
+    cout << "dai m ";
     cin >> m;
-    ifstream inFile("file.txt");
-    if (!inFile) {
-        cout << "File open error" << endl;
+
+    ifstream gfile("jdsaf.txt");
+    if (!gfile.is_open()) {
+        cout << "net" << endl;
         return 1;
     }
-    cout << "First numbers:" << endl;
+
+   
+
     int number;
     int count = 0;
-    while (inFile >> number && count < m) {
-        cout << number << " ";
-        ++count;
+    for (int i = 0; i < m; i++) {
+        if (gfile >> number) {
+            cout << number << " ";
+            count++;
+        }
+        else {
+            cout << "net" << endl;
+            break;
+        }
     }
-    inFile.close();
-
-    if (count == 0) {
-        cout << "\nFile empty or doesnt have numbers" << endl;
-    } else if (count < m) {
-        cout << "\nAttention, there is less numbers in file(" << count << " from " << m << ")" << endl;
-    } else {
-        cout << endl;
+    if (count == m) {
+        cout << endl << "good" << m << " чисел." << endl;
+    }
+    else {
+        cout << "bad " << count << " чисел." << endl;
     }
 
+    gfile.close();
     return 0;
 }
