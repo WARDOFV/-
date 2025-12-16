@@ -7,7 +7,7 @@ int main() {
 
     ifstream ifs(filename);
     if (!ifs) {
-        cout << "Не удалось открыть файл " << endl;
+        cout << "net " << endl;
         return 1;
     }
 
@@ -20,7 +20,7 @@ int main() {
         }
     }
 
-    cout << "Сумма четных чисел в файле: " << sum << endl;
+    cout << "symma chetnih " << sum << endl;
 
     ifs.close();
 
